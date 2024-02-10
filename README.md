@@ -6,6 +6,9 @@ need to have multiple hosts and the single-node gpdemo cluster is
 insufficient. The docker compose GPDB 7 cluster is ephemeral so the
 cluster can be discarded and rebuilt for quick and clean testing. The
 OS of choice here is Rocky Linux 8.
+```
+sudo dnf install podman-compose
+```
 
 ## Build the image
 
@@ -15,7 +18,7 @@ designed to work for GPDB 7 compilation and running the cluster.
 
 ```
 pushd ./build/
-docker build -t gpdb7-multinode-cluster/gpdb-systemd-image .
+podman build -t gpdb7-multinode-cluster/gpdb-systemd-image .
 popd
 ```
 
@@ -28,7 +31,7 @@ The `docker-compose.yaml` uses three environment variables:
 1. `$GPDB7_SRC` (the path to your GPDB 7X source code)
 ```
 Example:
-export GPDB7_SRC=/Users/jyih/workspace/gpdb7
+export GPDB7_SRC=/home/zphile/Downloads/gpdb_src
 ```
 Note: The `$GPDB7_SRC` path will be mounted and used for compilation
 so it would be good to run `git clean -xfd` in the directory to rid of
@@ -50,7 +53,7 @@ source code and some orchestration scripts from this repository).
 
 ```
 # In this repository's top-level dir
-docker-compose up -d
+podman-compose up -d
 ```
 
 ## Run coordinate-everything.sh script
