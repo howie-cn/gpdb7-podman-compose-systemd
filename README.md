@@ -30,8 +30,8 @@ to the build directory). The image is stored locally.
 The `docker-compose.yaml` uses three environment variables:
 1. `$GPDB7_SRC` (the path to your GPDB 7X source code)
 ```
-Example:
 export GPDB7_SRC=/home/zphile/Downloads/gpdb_src
+export GPDB_RPM=/home/zphile/Downloads
 ```
 Note: The `$GPDB7_SRC` path will be mounted and used for compilation
 so it would be good to run `git clean -xfd` in the directory to rid of
